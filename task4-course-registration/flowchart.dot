@@ -1,0 +1,28 @@
+digraph Course_Registration {
+    node [shape=box]; Start; End; Login; List; AddOK; Remove; Error; Advisor; Confirm;
+    node [shape=diamond]; Action; Quota; PreReq; Conflict; Credits; More; GPA;
+
+    Start -> Login;
+    Login -> List -> Action;
+    Action -> Quota [label="Add"];
+    Quota -> PreReq [label="Yes"];
+    PreReq -> Conflict [label="Yes"];
+    Conflict -> Credits [label="Yes"];
+    Credits -> AddOK [label="Yes"];
+    
+    Quota -> Error [label="No"];
+    PreReq -> Error [label="No"];
+    Conflict -> Error [label="No"];
+    Credits -> Error [label="No"];
+    
+    Action -> Remove [label="Drop"];
+    AddOK -> More;
+    Remove -> More;
+    Error -> More;
+    More -> Action [label="Yes"];
+    More -> GPA [label="No"];
+    GPA -> Advisor [label="Yes"];
+    GPA -> Confirm [label="No"];
+    Advisor -> End;
+    Confirm -> End;
+}
