@@ -1,0 +1,26 @@
+graph TD
+    Start([Start]) --> Login[Student Login]
+    Login --> List[View Course List]
+    List --> Action{Add or Drop?}
+    
+    Action -- Add --> Quota{Capacity OK?}
+    Quota -- Yes --> PreReq{Prerequisites Met?}
+    PreReq -- Yes --> Conflict{No Schedule Conflict?}
+    Conflict -- Yes --> Credits{Total Credits <= 35?}
+    Credits -- Yes --> AddOK[Course Added]
+    
+    Quota -- No --> Error[Show Error Message]
+    PreReq -- No --> Error
+    Conflict -- No --> Error
+    Credits -- No --> Error
+    
+    Action -- Drop --> Remove[Remove Course]
+    
+    AddOK & Remove & Error --> More{More Changes?}
+    More -- Yes --> Action
+    More -- No --> GPA{GPA < 2.5?}
+    
+    GPA -- Yes --> Advisor[Advisor Approval Required]
+    GPA -- No --> Confirm[Display Summary & Confirm]
+    
+    Advisor & Confirm --> End([End])
