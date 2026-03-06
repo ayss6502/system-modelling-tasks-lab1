@@ -1,0 +1,22 @@
+digraph ATM {
+    node [shape=box, style=rounded]; Start; End;
+    node [shape=diamond, style=""]; Trial; Auth; Check1; Check2; Check3; Loop;
+    node [shape=box, style=""]; Insert; Balance; Input; Dispense; Block;
+
+    Start -> Insert;
+    Insert -> Trial;
+    Trial -> Auth [label="Yes"];
+    Trial -> Block [label="No"];
+    Auth -> Trial [label="No"];
+    Auth -> Balance [label="Yes"];
+    Balance -> Input -> Check1;
+    Check1 -> Check2 [label="No"];
+    Check1 -> Balance [label="Yes"];
+    Check2 -> Check3 [label="Yes"];
+    Check2 -> Balance [label="No"];
+    Check3 -> Dispense [label="No"];
+    Check3 -> Balance [label="Yes"];
+    Dispense -> Loop;
+    Loop -> Balance [label="Yes"];
+    Loop -> End [label="No"];
+}
