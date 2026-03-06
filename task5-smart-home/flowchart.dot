@@ -1,0 +1,23 @@
+digraph Smart_Home {
+    node [shape=box]; Start; End; Sensors; Camera; False; Level; Alert; Recheck;
+    node [shape=diamond]; Active; Trigger; Home; Reset;
+
+    Start -> Active;
+    Active -> Sensors [label="Yes"];
+    Active -> End [label="No"];
+    
+    Sensors -> Trigger;
+    Trigger -> Sensors [label="No"];
+    Trigger -> Camera [label="Yes"];
+    
+    Camera -> Home;
+    Home -> False [label="Yes"];
+    Home -> Level [label="No"];
+    
+    Level -> Alert -> Recheck;
+    False -> Reset;
+    Recheck -> Reset;
+    
+    Reset -> Sensors [label="Continue"];
+    Reset -> End [label="Reset"];
+}
