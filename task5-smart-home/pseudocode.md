@@ -1,4 +1,4 @@
-START
+```START
 IF system_active == TRUE:
     LOOP (Continuous Monitoring):
         READ Motion sensor data
@@ -24,3 +24,4 @@ IF system_active == TRUE:
 ELSE:
     DISPLAY "System is offline."
 END
+```
