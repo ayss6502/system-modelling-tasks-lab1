@@ -1,0 +1,23 @@
+digraph Shopping_System {
+    node [shape=box]; Start; End; Browse; Add; View; Discount; Free; Fee; Pay;
+    node [shape=diamond]; Login; Stock; Continue; Min; Ship;
+
+    Start -> Login;
+    Login -> Browse [label="Yes"];
+    Login -> End [label="No"];
+    Browse -> Stock;
+    Stock -> Add [label="Yes"];
+    Stock -> Browse [label="No"];
+    Add -> Continue;
+    Continue -> Browse [label="Yes"];
+    Continue -> View [label="No"];
+    View -> Min;
+    Min -> View [label="No"];
+    Min -> Discount [label="Yes"];
+    Discount -> Ship;
+    Ship -> Free [label="Yes"];
+    Ship -> Fee [label="No"];
+    Free -> Pay;
+    Fee -> Pay;
+    Pay -> End;
+}
