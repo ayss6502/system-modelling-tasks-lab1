@@ -1,4 +1,4 @@
-START
+```START
 CHECK User login status (Condition)
 LOOP (Browsing through product categories):
     SELECT product
@@ -22,3 +22,4 @@ ELSE:
 SELECT payment method (Condition)
 CONFIRM order
 END
+```
