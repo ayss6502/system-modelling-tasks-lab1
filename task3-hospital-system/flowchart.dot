@@ -1,0 +1,20 @@
+digraph Hospital_System {
+    node [shape=box]; Start; End; ID; Clinic; Slots; SMS; NoTest; Wait; View;
+    node [shape=diamond]; Choice; Exists; Ready; Another;
+
+    Start -> ID;
+    ID -> Choice;
+    Choice -> Clinic [label="Appointment"];
+    Clinic -> Slots -> SMS;
+    SMS -> Another;
+    Choice -> Exists [label="Results"];
+    Exists -> NoTest [label="No"];
+    Exists -> Ready [label="Yes"];
+    Ready -> Wait [label="No"];
+    Ready -> View [label="Yes"];
+    View -> Another;
+    NoTest -> Another;
+    Wait -> Another;
+    Another -> Choice [label="Yes"];
+    Another -> End [label="No"];
+}
