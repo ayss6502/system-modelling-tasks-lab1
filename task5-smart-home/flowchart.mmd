@@ -1,0 +1,21 @@
+graph TD
+    Start([Start]) --> Active{System Active?}
+    Active -- No --> End([End])
+    Active -- Yes --> Sensors[Loop: Read Sensors]
+    
+    Sensors --> Trigger{Motion or Door Triggered?}
+    Trigger -- No --> Sensors
+    Trigger -- Yes --> Camera[Activate Camera]
+    
+    Camera --> Home{Homeowner at Home?}
+    Home -- Yes --> False[Display False Alarm Check]
+    Home -- No --> Level[Determine Alarm Level 1-3]
+    
+    Level --> Alert[Send SMS, App, Email]
+    Alert --> Recheck[Wait & Re-check Sensors]
+    
+    False --> Reset{Reset or Continue?}
+    Recheck --> Reset
+    
+    Reset -- Continue --> Sensors
+    Reset -- Reset --> End
