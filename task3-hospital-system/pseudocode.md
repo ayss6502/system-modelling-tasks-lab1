@@ -1,4 +1,4 @@
-START
+```START
 PROMPT patient for Identity verification (ID number)
 IF ID is valid:
     DISPLAY Action Selection Menu:
@@ -29,3 +29,4 @@ IF ID is valid:
 ELSE:
     DISPLAY "Invalid ID"
 END
+```
