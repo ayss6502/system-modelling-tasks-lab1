@@ -1,0 +1,19 @@
+graph TD
+    Start([Start]) --> PIN[Insert Card & Enter PIN]
+    PIN --> CheckPIN{PIN Correct?}
+    CheckPIN -- No --> Attempts{Attempts < 3?}
+    Attempts -- Yes --> PIN
+    Attempts -- No --> Block[Block Card & Exit]
+    CheckPIN -- Yes --> ShowBal[Display Balance]
+    ShowBal --> Input[Input Amount]
+    Input --> Valid{Amount <= Balance?}
+    Valid -- No --> Error1[Insufficient Funds]
+    Valid -- Yes --> Multi{Multiple of 20?}
+    Multi -- No --> Error2[Invalid Units]
+    Multi -- Yes --> Limit{Under Daily Limit?}
+    Limit -- No --> Error3[Limit Exceeded]
+    Limit -- Yes --> Success[Dispense Cash & Print Receipt]
+    Success --> Another{Another Transaction?}
+    Error1 & Error2 & Error3 --> Another
+    Another -- Yes --> ShowBal
+    Another -- No --> End([End])
