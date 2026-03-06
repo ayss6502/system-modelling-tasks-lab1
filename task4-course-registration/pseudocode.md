@@ -1,4 +1,4 @@
-START
+```START
 PROMPT for Student ID and Password
 IF Login Successful:
     DISPLAY available course list
@@ -32,3 +32,4 @@ IF Login Successful:
 ELSE:
     DISPLAY "Login Failed"
 END
+```
