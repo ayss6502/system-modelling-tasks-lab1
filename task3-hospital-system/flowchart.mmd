@@ -1,0 +1,15 @@
+graph TD
+    Start([Start]) --> ID[Enter Patient ID]
+    ID --> Choice{Select Action}
+    Choice -- 1: Appointment --> Clinic[Select Clinic & Doctor]
+    Clinic --> Slots[Loop: Select Time Slot]
+    Slots --> SMS[Confirm & Send SMS]
+    SMS --> Another
+    Choice -- 2: Test Results --> Exists{Tests Exist?}
+    Exists -- No --> NoTest[Display: No Records]
+    Exists -- Yes --> Ready{Results Ready?}
+    Ready -- No --> Wait[Display: Waiting Message]
+    Ready -- Yes --> View[Display & Download PDF]
+    View & NoTest & Wait --> Another{Another Action?}
+    Another -- Yes --> Choice
+    Another -- No --> End([End])
