@@ -1,4 +1,4 @@
-START
+'''START
 SET balance = 1000, daily_limit = 5000, attempts = 0
 INSERT card
 LOOP WHILE attempts < 3:
@@ -28,4 +28,4 @@ IF yes:
     GOTO balance display
 ELSE:
     EXIT
-END
+END'''
