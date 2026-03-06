@@ -1,0 +1,19 @@
+graph TD
+    Start([Start]) --> Login{User Logged In?}
+    Login -- No --> End([End])
+    Login -- Yes --> Browse[Browse Categories]
+    Browse --> Select[Select Product]
+    Select --> Stock{Stock > 0?}
+    Stock -- No --> Browse
+    Stock -- Yes --> Add[Add to Cart]
+    Add --> Continue{Continue Shopping?}
+    Continue -- Yes --> Browse
+    Continue -- No --> View[View/Edit Cart]
+    View --> Min{Total >= $10?}
+    Min -- No --> View
+    Min -- Yes --> Discount[Apply Discount Code]
+    Discount --> Ship{Total > $40?}
+    Ship -- Yes --> Free[Free Shipping]
+    Ship -- No --> Fee[Add Shipping Fee]
+    Free & Fee --> Pay[Select Payment & Confirm]
+    Pay --> End
